@@ -1,0 +1,178 @@
+@import url('https://fonts.cdnfonts.com/css/built-titling');
+
+/*
+* Standard CSS reset
+*/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+}
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+input, button, textarea, select {
+    font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    font-family: Gotham;
+}
+#root, #__next {
+    isolation: isolate;
+}
+a {
+    font-family: Gotham;
+    text-decoration: none;
+}
+
+/* ///// ///// ///// */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+            
+
+
+/* Topic container */
+.topic-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* height: 75vh; */
+    height: 40vw;
+    width: 90vw;
+    /* margin-bottom: 75vh;     */
+}
+
+/* Horizontal lines */
+hr.divider-line {
+    width: 100%;
+    border: .1vw solid black;
+
+    transform: scaleX(0);
+    transform-origin: top left;
+    transition: transform 1s cubic-bezier(0.62, 0.05, 0.01, 1);
+}
+/* Animation */
+hr.divider-line.show {
+    transform: scaleX(1);
+}
+/* Hide the top divider line for all topic-container except first one */
+.topic-container:not(:nth-of-type(1)) hr.divider-line:nth-of-type(1) {
+    opacity: 0;
+}
+
+
+/* Inner container */
+.topic-container .inner-container {
+    display: flex;
+    position: relative;
+    height: 80%;
+}
+.inner-container:hover {
+    cursor: none;
+}
+
+/* Text wrapper */
+.topic-container .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+/* Topic heading text */
+.topic-container h2 {
+    font-family: 'Built Titling', sans-serif;
+    font-size: 6vw;
+    line-height: 1;
+    width: 40vw;
+    text-transform: uppercase;
+}
+h2 .overflow-hidden {
+    display: flex;
+    overflow: hidden;
+}
+h2 .text-line {
+    transform: translateY(100%);
+    transition: transform 1s cubic-bezier(0.62, 0.05, 0.01, 1);
+}
+h2.show .text-line {
+    transform: translateY(0%);
+}
+
+/* Topic datum text */
+.topic-container p {
+    font-size: 1vw;
+    color: #A7AB9F;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.62, 0.05, 0.01, 1) .3s;
+}
+.topic-container p.show {
+    opacity: 1;
+}
+
+/* Image container */
+.image-container {
+    position: absolute;
+    right: 0;
+    width: 70%;
+    height: 100%;
+    z-index: -5;
+}
+
+/* Image wrapper */
+.image-container .reveal-wrapper {
+    width: 0%;
+    height: 100%;
+    clip-path: border-box;
+    transition: width 1.2s cubic-bezier(0.62, 0.05, 0.01, 1);
+}
+.image-container.show .reveal-wrapper {
+    width: 100%;
+    
+}
+
+/* Image styling */
+img.topic-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.arrow-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8em;
+    pointer-events: none;
+    opacity: 0;
+}
+
+h1 {
+    font-family: 'Built Titling', sans-serif;
+    font-size: 5vw;
+}
+.white-space {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
